@@ -1,13 +1,60 @@
-// TODO: Include packages needed for this application
+const inquirer = require("inquirer");
+const fs = require("fs");
 
-// TODO: Create an array of questions for user input
-const questions = [];
+var writeFile=(filename, content)=>{
+    fs.writeFile(filename, content, (err)=>{
+        if(err)
+            console.log(err)})
+}
 
-// TODO: Create a function to write README file
-function writeToFile(fileName, data) {}
+var generateContent=(data)=>{
+    var content = `# ${data.title} 
 
-// TODO: Create a function to initialize app
-function init() {}
 
-// Function call to initialize app
-init();
+## Description
+
+${data.description}
+
+## Installation
+
+${data.install}
+`
+    return content
+}
+
+var promptUser=()=>{
+inquirer.prompt([
+    /* Pass your questions in here */
+    {
+        type: 'input',
+        name: 'name',
+        message: 'What is your project title?'
+    },
+    {
+        type: 'input',
+        name: 'descripton',
+        message: 'Please enter a description of the project.'
+    },
+    {
+        type: 'input',
+        name: 'install',
+        message: 'How is your project installed?',
+    },
+  ])
+  .then((answers) => {
+    // Use user feedback for... whatever!!
+    console.log(answers)
+    //other functions get called here
+    const content = generateContent(answers);
+    writeFile("./README.md", content);
+  })
+  .catch((error) => {
+    if (error.isTtyError) {
+      // Prompt couldn't be rendered in the current environment
+    } else {
+      // Something else went wrong
+    }
+  });
+};
+
+promptUser();
