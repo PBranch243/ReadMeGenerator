@@ -27,12 +27,12 @@ inquirer.prompt([
     /* Pass your questions in here */
     {
         type: 'input',
-        name: 'name',
+        name: 'title',
         message: 'What is your project title?'
     },
     {
         type: 'input',
-        name: 'descripton',
+        name: 'description',
         message: 'Please enter a description of the project.'
     },
     {
