@@ -20,6 +20,11 @@ const questions = [
   },
   {
     type: 'input',
+    name: 'use',
+    message: 'How is this app used?',
+  },
+  {
+    type: 'input',
     name: 'email',
     message: 'What is your email?'
   },
@@ -27,6 +32,17 @@ const questions = [
     type: 'input',
     name: 'github',
     message: 'What is your GitHub user name?'
+  },
+  {
+    type: 'list',
+    name: 'license',
+    message: 'Please choose a license for your project',
+    choices: ['MIT', 'GNU GPLv3', 'none'],
+  },
+  {
+    type: 'input',
+    name: 'contribute',
+    message: 'How can folks contribute?'
   }
 ]
 
@@ -60,11 +76,15 @@ ${data.install}
 
 ## Usage
 
-## Credits
+${data.use}
 
 ## License
 
+This project is covered under the following license:  ${data.license}
+
 ## Contribution
+
+${data.contribute}
 
 ## Questions
 
